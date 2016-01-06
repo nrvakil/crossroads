@@ -1,4 +1,4 @@
-class PlayersController < ActionController::Base
+class PlayersController < ApplicationController
   def index
     @players = Player.all
     render json: { payload: @players,

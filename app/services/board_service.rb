@@ -1,0 +1,2 @@
+class BoardService
+end
