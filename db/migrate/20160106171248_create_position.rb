@@ -1,6 +1,6 @@
-class CreateBoard < ActiveRecord::Migration
+class CreatePosition < ActiveRecord::Migration
   def change
-    create_table :boards do |t|
+    create_table :positions do |t|
       t.integer :game_id, null: false
       t.integer :player_id, null: false
       t.integer :x, null: false
@@ -8,6 +8,6 @@ class CreateBoard < ActiveRecord::Migration
       t.string :face, null: false
     end
 
-    add_index :boards, [:game_id, :player_id]
+    add_index :positions, [:game_id, :player_id]
   end
 end
