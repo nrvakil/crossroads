@@ -3,6 +3,7 @@ class CreateGame < ActiveRecord::Migration
     create_table :games do |t|
       t.integer :player_ids, array: true, null: false
       t.integer :winners, array: true
+      t.timestamps
     end
   end
 end

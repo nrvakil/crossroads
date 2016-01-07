@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107030059) do
+ActiveRecord::Schema.define(version: 20160106171248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.integer "player_ids", null: false, array: true
-    t.integer "winners",                 array: true
+    t.integer  "player_ids", null: false, array: true
+    t.integer  "winners",                 array: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "players", force: :cascade do |t|
@@ -26,11 +28,13 @@ ActiveRecord::Schema.define(version: 20160107030059) do
   end
 
   create_table "positions", force: :cascade do |t|
-    t.integer "game_id",   null: false
-    t.integer "player_id", null: false
-    t.integer "x",         null: false
-    t.integer "y",         null: false
-    t.string  "face",      null: false
+    t.integer  "game_id",    null: false
+    t.integer  "player_id",  null: false
+    t.integer  "x",          null: false
+    t.integer  "y",          null: false
+    t.string   "face",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "positions", ["game_id", "player_id"], name: "index_positions_on_game_id_and_player_id", using: :btree

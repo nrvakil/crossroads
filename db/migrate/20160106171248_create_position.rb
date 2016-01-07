@@ -6,6 +6,7 @@ class CreatePosition < ActiveRecord::Migration
       t.integer :x, null: false
       t.integer :y, null: false
       t.string :face, null: false
+      t.timestamps
     end
 
     add_index :positions, [:game_id, :player_id]
