@@ -11,20 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106171248) do
+ActiveRecord::Schema.define(version: 20160107030059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "boards", force: :cascade do |t|
-    t.integer "game_id",   null: false
-    t.integer "player_id", null: false
-    t.integer "x",         null: false
-    t.integer "y",         null: false
-    t.string  "face",      null: false
-  end
-
-  add_index "boards", ["game_id", "player_id"], name: "index_boards_on_game_id_and_player_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.integer "player_ids", null: false, array: true
@@ -34,5 +24,15 @@ ActiveRecord::Schema.define(version: 20160106171248) do
   create_table "players", force: :cascade do |t|
     t.string "name", null: false
   end
+
+  create_table "positions", force: :cascade do |t|
+    t.integer "game_id",   null: false
+    t.integer "player_id", null: false
+    t.integer "x",         null: false
+    t.integer "y",         null: false
+    t.string  "face",      null: false
+  end
+
+  add_index "positions", ["game_id", "player_id"], name: "index_positions_on_game_id_and_player_id", using: :btree
 
 end
