@@ -5,7 +5,8 @@ class PositionsController < ApplicationController
   # @return [hash] hash containing player positions on board
   def index
     @positions = Position.where(game_id: params[:game_id])
-                 .in(player_id: params[:player_ids]).order(created_at: :desc).all
+                 .where('player_id IN (?)', params[:player_ids])
+                 .order(created_at: :desc).all
     render json: { payload: @positions,
                    meta: { total: @positions.count } }
   end
@@ -32,14 +33,15 @@ class PositionsController < ApplicationController
   #
   # @return [hash] Created position and id
   def create
-    @position = PositionService.new(params).take_a_step
+    service_obj = PositionService.new(params)
+    @position = service_obj.take_a_step
     render json: { payload: @position,
-                   meta: { id: @position.id } }
+                   meta: { id: @position.id, winner: service_obj.winner? } }
   end
 
   private
 
-  def position_params
-    params.permit(:game_id, :player_id, :player_ids, *Position.column_names)
-  end
+  # def position_params
+  #   params.permit(:game_id, :player_id, :player_ids, *Position.column_names)
+  # end
 end

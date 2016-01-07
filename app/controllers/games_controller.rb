@@ -20,6 +20,14 @@ class GamesController < ApplicationController
     render json: { payload: @game, meta: @game.id }
   end
 
+  #
+  # Rolls the die
+  #
+  # @return [hash] hash containing face value of die
+  def roll
+    render json: { payload: Dice.new.roll }
+  end
+
   private
 
   attr_accessor :player_ids
