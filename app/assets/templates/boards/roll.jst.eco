@@ -1,0 +1,19 @@
+<div class="panel">
+  <div class="panel-header">
+    <div class="row">
+      <h5 class="to_center">Roll the dice</h5>
+    </div>
+    <hr />
+    <div class="row">
+      <h5 class="to_center"><%= @player.get('name') %>
+      <input id="player-turn" class="hidden" value="<%= @player.get('id') %>">
+      </h5>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <h3 class="to_center"><%= @face %></h3>
+    </div>
+  </div>
+</div>

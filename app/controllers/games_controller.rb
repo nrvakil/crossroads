@@ -12,6 +12,15 @@ class GamesController < ApplicationController
   end
 
   #
+  # Gets game with the given id
+  #
+  # @return [hash] hash containing game and its id
+  def show
+    @game = Game.find(params[:id])
+    render json: { payload: @game, meta: @game.id }
+  end
+
+  #
   # Creates a game with given players
   #
   # @return [hash] hash containing created game and its id

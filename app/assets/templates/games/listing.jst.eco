@@ -3,9 +3,32 @@
     <center><h2>CrossRoads Inc.</h3></center>
     <hr />
   </div>
-  <div class="col-md-12">
-    <h4><%= @games.length %></h4>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="row">
+        <div class="col-md-4">
+          <label class="control-label label-sm">Enter number of players:</label>
+        </div>
+        <div class="col-md-4">
+          <input type="number" id="player_count" class="form-control input-sm" min="1">
+        </div>
+        <div class="col-md-4">
+          <button id="btn-go" class="btn-success btn-sm">GO >>></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <ul>
+        <% for game in @games.models: %>
+          <li><%= game.get('player_ids').toString() %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 <hr />
-<center><button id="btn-go" class="btn-success btn-md">GO >>></button></center>

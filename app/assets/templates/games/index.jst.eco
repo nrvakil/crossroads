@@ -17,4 +17,4 @@
   </div>
 </div>
 <hr />
-<center><button id="btn-play" class="btn-primary btn-lg">PLAY</button></center>
+<center><button id="btn-play" class="btn-primary btn-lg" href="#listing">PLAY</button></center>

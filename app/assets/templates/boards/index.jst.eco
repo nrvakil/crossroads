@@ -1,0 +1,13 @@
+<%= _.pluck($.board.get('players'), 'name').toString() %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <div id='die-roller' class="row">
+      </div>
+
+      <div class="row">
+        <button id="btn-roll" class="btn-danger btn-sm">ROLL</button>
+      </div>
+    </div>
+  </div>
+</div>

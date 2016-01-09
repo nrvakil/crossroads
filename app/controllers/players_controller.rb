@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   #
   # @return [hash] hash containing all players and total count
   def index
-    @players = Player.all
+    @players = params[:ids] ? Player.find(params[:ids]) : Player.all
     render json: { payload: @players,
                    meta: { total: @players.count } }
   end
