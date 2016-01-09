@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+    <center><h2>CrossRoads Inc.</h3></center>
+    <hr />
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      <h4>Rules:</h4>
+      <ul>
+        <li>Two or more player can play the game.</li>
+        <li>Each player throws a dice, which has four faces (N, E, S, W).</li>
+        <li> Based on what player gets on dice, he/she takes a step in that direction.</li>
+        <li>The player who cuts other player path, will win.</li>
+        <li>The path cross at the first step of the game will not be counted towards win.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr />
+<center><button class="btn-primary btn-lg">PLAY</button></center>
