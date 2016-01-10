@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div id="home" class="col-md-12">
       <center><h2>CrossRoads Inc.</h2></center>
     </div>
   </div>

@@ -7,6 +7,7 @@ class Crossroads.Views.GamesListing extends Backbone.View
 
   events:
     "click #btn-go": "go"
+    "click #home": "home"
 
   render: ->
     @players = new Crossroads.Collections.Players()
@@ -28,3 +29,6 @@ class Crossroads.Views.GamesListing extends Backbone.View
   loadBoard: ->
     if @curr_game
       Backbone.history.navigate("board/#{@curr_game.get('id')}", true)
+
+  home: ->
+    Backbone.history.navigate('/', true)

@@ -8,6 +8,7 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
 
   events:
     "click #btn-roll": "roll"
+    "click #home": "home"
 
   render: ->
     @players = new Crossroads.Collections.Players()
@@ -117,3 +118,6 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
     row = @log_template(id: @position.id, name: @player.get('name'), previous_x: @meta.previous_x, previous_y: @meta.previous_y, current_x: @position.x, current_y: @position.y, direction: @position.face, winner: @meta.winner)
 
     $('#logs').append(row)
+
+  home: ->
+    Backbone.history.navigate('/', true)

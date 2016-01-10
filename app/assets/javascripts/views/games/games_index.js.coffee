@@ -4,6 +4,7 @@ class Crossroads.Views.GamesIndex extends Backbone.View
 
   events:
     "click #btn-play": "play"
+    "click #home": "home"
 
   render: ->
     $(@el).html((@template()))
@@ -11,3 +12,6 @@ class Crossroads.Views.GamesIndex extends Backbone.View
 
   play: ->
     Backbone.history.navigate('listing', true)
+
+  home: ->
+    Backbone.history.navigate('/', true)
