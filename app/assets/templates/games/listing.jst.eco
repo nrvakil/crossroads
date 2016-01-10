@@ -32,6 +32,7 @@
           <thead>
             <tr>
               <th>#</th>
+              <th>Played at</th>
               <th>Players</th>
               <th>Winners</th>
             </tr>
@@ -40,6 +41,7 @@
             <% for game in @games.models: %>
               <tr>
                 <td><%= game.get('id') %></td>
+                <td><%= new Date(game.get('created_at')).toUTCString() %></td>
                 <td>
                   <ol>
                     <% for player_id in game.get('player_ids'): %>

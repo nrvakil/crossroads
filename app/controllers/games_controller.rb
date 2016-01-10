@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   #
   # @return [hash] hash containing all games and total count
   def index
-    @games = Game.all
+    @games = Game.all.order(created_at: :desc)
     render json: { payload: @games,
                    meta: { total: @games.count } }
   end

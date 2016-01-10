@@ -1,4 +1,6 @@
 class PositionsController < ApplicationController
+  before_filter -> { check_game_status }, only: [:initiate, :create]
+
   #
   # Provide covered positions of all players in the game
   #
@@ -29,7 +31,7 @@ class PositionsController < ApplicationController
   end
 
   #
-  # Create a position
+  # Creates a position
   #
   # @return [hash] Created position and id
   def create
@@ -43,6 +45,15 @@ class PositionsController < ApplicationController
   end
 
   private
+
+  #
+  # Checks if game needs to be ended
+  #
+  # @return [nil]
+  def check_game_status
+    service_obj = GameService.new(game_id: params[:game_id])
+    fail GameIsOver.new 'Da! game is over!' if service_obj.end_game?
+  end
 
   # def position_params
   #   params.permit(:game_id, :player_id, :player_ids, *Position.column_names)

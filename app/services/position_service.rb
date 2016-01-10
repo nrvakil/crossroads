@@ -68,7 +68,8 @@ class PositionService
   # @return [boolean] true if winner else false
   def winner?
     covered = Position.where(game_id: game_id, x: x, y: y)
-              .where.not(player_id: player_id).count > 1
+              .where.not(player_id: player_id).count > 0 &&
+              step_count > 1
 
     GameService.new(game_id: game_id, player_id: player_id).add_winner if covered
     covered
@@ -91,5 +92,14 @@ class PositionService
   def next_step
     @x = curr_pos[:x] + direction[:x]
     @y = curr_pos[:y] + direction[:y]
+  end
+
+  #
+  # number of steps taken by a player
+  # skips first step (in accordance to the rules)
+  #
+  # @return [integer] count of total steps taken by that person
+  def step_count
+    Position.where(game_id: game_id, player_id: player_id).count - 1
   end
 end

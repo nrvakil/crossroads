@@ -60,10 +60,10 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
           player_ids: @player_ids
           game_id: $.board.get('game').get('id')
         error: (jqXHR, textStatus, errorThrown) =>
-          $('body').append "AJAX Error: #{textStatus}"
+          alert(jqXHR.responseJSON.meta.errors)
+          Backbone.history.navigate('listing', true)
         success: (data, textStatus, jqXHR) =>
-          for player_id in @player_ids
-            $('#graph').html()
+          console.log('players standing at origin')
     else
       @player_id = parseInt($('#player-turn').val())
       url = '/positions'
@@ -77,12 +77,17 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
           game_id: $.board.get('game').get('id')
           face: @face
         error: (jqXHR, textStatus, errorThrown) =>
-          $('body').append "AJAX Error: #{textStatus}"
+          alert(jqXHR.responseJSON.meta.errors)
+          Backbone.history.navigate('listing', true)
         success: (data, textStatus, jqXHR) =>
           @position = data.payload
           @meta = data.meta
 
-          row = @graph_template(x1: @meta.previous_x, y1: @meta.previous_y, x2: @position.x, y2: @position.y, player_id: @position.player_id)
+          $('#name-' + @player.get('id')).remove()
+          $('#x-' + @player.get('id')).remove()
+          $('#y-' + @player.get('id')).remove()
+
+          row = @graph_template(x1: @meta.previous_x, y1: @meta.previous_y, x2: @position.x, y2: @position.y, player: @player)
           $('#graph').html($('#graph').html() + row)
 
           if @meta.winner

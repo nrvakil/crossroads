@@ -8,5 +8,7 @@ module Errors
     rescue_from ActiveRecord::StatementInvalid, with: :render_bad_request
 
     rescue_from ActionDispatch::ParamsParser::ParseError, with: :render_not_acceptable
+
+    rescue_from GameIsOver, with: :render_bad_request
   end
 end

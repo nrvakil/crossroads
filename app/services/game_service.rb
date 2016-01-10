@@ -24,4 +24,16 @@ class GameService
     game.save
     game.winners
   end
+
+  #
+  # Checks when to end game
+  # Ends for first winner if only two/three players
+  # Ends for three winners if more than three players
+  #
+  # @return [boolean] true if game is to be ended
+  def end_game?
+    @game = Game.find(game_id)
+    count = game.player_ids.count > 3 ? 3 : 1
+    @game.winners && @game.winners.count == count ? true : false
+  end
 end

@@ -1,3 +1,7 @@
-<line id=<%= @player_id %> x1=<%= @x1 * 50 + 450 %> y1=<%= @y1 * 50 + 250 %> x2=<%= @x2 * 50 + 450 %> y2=<%= @y2 * 50 + 250 %> style="stroke:rgb(255,0,0);stroke-width:2" />
+<line id=<%= @player.get('id') %> x1=<%= @x1 * 50 + 450 %> y1=<%= @y1 * 50 + 250 %> x2=<%= @x2 * 50 + 450 %> y2=<%= @y2 * 50 + 250 %> style="stroke:rgb(255,0,0);stroke-width:2" />
 
-<text x=<%= @x2 * 50 + 450 %> y=<%= @y2 * 50 + 250 %> fill="blue"><%= @player_id %></text>
+<line id="x-<%= @player.get('id') %>" x1=<%= @x2 * 50 + 445 %> y1=<%= @y2 * 50 + 250 %> x2=<%= @x2 * 50 + 455 %> y2=<%= @y2 * 50 + 250 %> style="stroke:rgb(255,0,0);stroke-width:2" />
+
+<line id="y-<%= @player.get('id') %>" x1=<%= @x2 * 50 + 450 %> y1=<%= @y2 * 50 + 245 %> x2=<%= @x2 * 50 + 450 %> y2=<%= @y2 * 50 + 255 %> style="stroke:rgb(255,0,0);stroke-width:2" />
+
+<text id="name-<%= @player.get('id') %>" x=<%= @x2 * 50 + 450 %> y=<%= @y2 * 50 + 250 %> fill="blue"><%= @player.get('name').split(' ')[0] %></text>
