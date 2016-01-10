@@ -33,6 +33,11 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
         @getPosition(@face)
 
   roundRobin: (face) =>
+    winners = $.board.game.get('winners') || []
+
+    for winner in winners
+      $.board.get('players').remove(id: winner)
+
     if !$('#player-turn').val()
       @player = $.board.get('players').models[0]
     else
@@ -96,6 +101,12 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
           @logEntry(@position, @meta)
 
   addWinner: (player_id) ->
+    $.board.game.set({'winners': _.flatten([$.board.game.get('winners'), [player_id]])})
+
+    $('#name-' + @player_id).remove()
+    $('#x-' + @player_id).remove()
+    $('#y-' + @player_id).remove()
+
     $('#winners').html($('#winners').html() + @winner_template(player: @player))
 
   logEntry: (position, meta) ->

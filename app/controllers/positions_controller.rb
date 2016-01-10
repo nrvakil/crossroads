@@ -1,5 +1,5 @@
 class PositionsController < ApplicationController
-  before_filter -> { check_game_status }, only: [:initiate, :create]
+  before_filter -> { check_game_status }, only: [:initiate]
 
   #
   # Provide covered positions of all players in the game
@@ -23,10 +23,7 @@ class PositionsController < ApplicationController
     params[:player_ids].each do |player_id|
       record_params = { game_id: params[:game_id], player_id: player_id,
                         x: 0, y: 0, face: '0' }
-
-      if Position.where(record_params).all.blank?
-        @positions << Position.create!(record_params)
-      end
+      @positions << Position.create!(record_params) if Position.where(record_params).all.blank?
     end
 
     render json: { payload: @positions,
@@ -40,9 +37,11 @@ class PositionsController < ApplicationController
   def create
     service_obj = PositionService.new(params)
     @position = service_obj.take_a_step
+    winner = service_obj.winner?
+    check_game_status
     render json: { payload: @position,
                    meta: { id: @position.id,
-                           winner: service_obj.winner?,
+                           winner: winner,
                            previous_x: service_obj.curr_pos[:x],
                            previous_y: service_obj.curr_pos[:y] } }
   end
@@ -55,10 +54,9 @@ class PositionsController < ApplicationController
   # @return [nil]
   def check_game_status
     service_obj = GameService.new(game_id: params[:game_id])
-    fail GameIsOver.new 'Da! game is over!' if service_obj.end_game?
+    if service_obj.end_game?
+      names = Player.where('id IN (?)', service_obj.game.winners).pluck(:name)
+      fail GameIsOver.new "Da! game is over! Winners - #{names.join(', ')}"
+    end
   end
-
-  # def position_params
-  #   params.permit(:game_id, :player_id, :player_ids, *Position.column_names)
-  # end
 end
