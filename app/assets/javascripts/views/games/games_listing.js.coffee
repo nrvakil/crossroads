@@ -20,7 +20,7 @@ class Crossroads.Views.GamesListing extends Backbone.View
   go: ->
     player_count = parseInt($('#player_count').val())
 
-    if !_.isNumber(player_count) || player_count < 2
+    if !_.isNumber(player_count) || player_count < 2 || _.isNaN(player_count)
       alert('Enter value greater than 2')
     else
       @curr_game = @collection.create player_count: player_count

@@ -21,9 +21,12 @@ class PositionsController < ApplicationController
     @positions = []
 
     params[:player_ids].each do |player_id|
-      @positions << Position.create!(game_id: params[:game_id],
-                                     player_id: player_id,
-                                     x: 0, y: 0, face: '0')
+      record_params = { game_id: params[:game_id], player_id: player_id,
+                        x: 0, y: 0, face: '0' }
+
+      if Position.where(record_params).all.blank?
+        @positions << Position.create!(record_params)
+      end
     end
 
     render json: { payload: @positions,

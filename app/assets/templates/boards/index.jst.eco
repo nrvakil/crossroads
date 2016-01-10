@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <center><h2>Board</h2></center>
+      <center><h2>CrossRoads Inc.</h2></center>
     </div>
   </div>
   <hr />
@@ -39,6 +39,11 @@
         style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
         <line x1="445" y1="250" x2="455" y2="250" style="stroke:rgb(0,0,0);stroke-width:4" />
         <line x1="450" y1="245" x2="450" y2="255" style="stroke:rgb(0,0,0);stroke-width:4" />
+
+        <text x="5" y="250" fill="black">W</text>
+        <text x="880" y="250" fill="black">E</text>
+        <text x="445" y="15" fill="black">S</text>
+        <text x="450" y="495" fill="black">N</text>
       </svg>
     </div>
   </div>

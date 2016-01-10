@@ -48,6 +48,9 @@ class GamesController < ApplicationController
   def create_players
     @player_ids = []
 
+    fail NotEnoughPlayers.new 'Needs more than two players!' if
+      params[:player_count].blank? || params[:player_count] < 2
+
     params[:player_count].times do
       player_ids << Player.create!(name: Faker::Name.name).id
     end

@@ -1,0 +1,2 @@
+class NotEnoughPlayers < StandardError
+end
