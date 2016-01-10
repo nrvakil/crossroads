@@ -13,11 +13,11 @@
       </div>
       <hr />
       <div class="row">
-        <ol>
+        <center>
           <% for player in @players.models: %>
-            <li><%= player.get('name') %></li>
+            <p><%= player.get('name') %></p>
           <% end %>
-        </ol>
+        </center>
       </div>
       <hr />
       <br>

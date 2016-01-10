@@ -9,7 +9,12 @@ class Crossroads.Views.GamesListing extends Backbone.View
     "click #btn-go": "go"
 
   render: ->
-    $(@el).html((@template(games: @collection)))
+    @players = new Crossroads.Collections.Players()
+    response = @players.fetch(data: { ids: _.flatten(@collection.pluck('player_ids')) })
+
+    response.success (options) =>
+      @players.reset(options.payload)
+      $(@el).html((@template(games: @collection, players: @players)))
     this
 
   go: ->

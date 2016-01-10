@@ -1,10 +1,12 @@
-<tr>
+<tr class="<%= if @winner then 'info' %>">
   <td><%= @id %></td>
   <td><%= @name %></td>
   <td>x: <%= @previous_x %>, y: <%= @previous_y %> </td>
   <td>x: <%= @current_x %>, y: <%= @current_y %> </td>
   <td><%= @direction %></td>
   <td>
-    <%= @winner %>
+    <% if @winner: %>
+      <span class="label label-success">WINNER</span>
+    <% end %>
   </td>
 </tr>

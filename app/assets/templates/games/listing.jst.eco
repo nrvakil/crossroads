@@ -23,11 +23,48 @@
 
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <ul>
-        <% for game in @games.models: %>
-          <li><%= game.get('player_ids').toString() %></li>
-        <% end %>
-      </ul>
+      <div class="row">
+        <center><label>Game History</label></center>
+      </div>
+      <hr />
+      <div class="row">
+        <table id="game-history" class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Players</th>
+              <th>Winners</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for game in @games.models: %>
+              <tr>
+                <td><%= game.get('id') %></td>
+                <td>
+                  <ol>
+                    <% for player_id in game.get('player_ids'): %>
+                      <li>
+                        <%= @players.where(id: player_id)[0].get('name') %>
+                      </li>
+                    <% end %>
+                  </ol>
+                </td>
+                <td>
+                  <% if !_.isEmpty(game.get('winners')): %>
+                    <ol>
+                      <% for player_id in game.get('winners'): %>
+                        <li>
+                          <%= @players.where(id: player_id)[0].get('name') %>
+                        </li>
+                      <% end %>
+                    </ol>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
