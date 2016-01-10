@@ -1,7 +1,16 @@
-<%= _.pluck($.board.get('players'), 'name').toString() %>
 <div class="container">
   <div class="row">
     <div class="col-md-2">
+      <div class="row">
+        <label>Players</label>
+        <ol>
+          <% for player in @players.models: %>
+            <li><%= player.get('name') %></li>
+          <% end %>
+        </ol>
+      </div>
+      <hr />
+
       <div id='die-roller' class="row">
       </div>
 
@@ -9,7 +18,12 @@
         <button id="btn-roll" class="btn-danger btn-sm">ROLL</button>
       </div>
     </div>
-    <div id="graph" class="col-md-10">
+
+    <div class="col-md-10">
+      <svg id="graph" width="900" height="500">
+        <rect x="0" y="0" width="900" height="500"
+        style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
+      </svg>
     </div>
   </div>
 </div>

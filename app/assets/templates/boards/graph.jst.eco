@@ -1,4 +1,1 @@
-<% debugger %>
-<svg height="210" width="500">
-  <line id=<%= @player_id %> x1=<%= @x1 * 10 %> y1=<%= @y1 * 10 %> x2=<%= @x2 * 10 %> y2=<%= @y2 * 10 %> style="stroke:rgb(255,0,0);stroke-width:2" />
-</svg>
+<line id=<%= @player_id %> x1=<%= @x1 * 50 + 450 %> y1=<%= @y1 * 50 + 250 %> x2=<%= @x2 * 50 + 450 %> y2=<%= @y2 * 50 + 250 %> style="stroke:rgb(255,0,0);stroke-width:2" />
