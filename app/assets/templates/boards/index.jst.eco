@@ -61,6 +61,20 @@
       </div>
       <hr />
       <div class="row">
+        <table id="logs" class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Player</th>
+              <th>Previous position</th>
+              <th>Current position</th>
+              <th>Direction</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

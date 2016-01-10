@@ -4,6 +4,7 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
   roll_template: JST['boards/roll']
   graph_template: JST['boards/graph']
   winner_template: JST['boards/winner']
+  log_template: JST['boards/log']
 
   events:
     "click #btn-roll": "roll"
@@ -78,12 +79,21 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
         error: (jqXHR, textStatus, errorThrown) =>
           $('body').append "AJAX Error: #{textStatus}"
         success: (data, textStatus, jqXHR) =>
-          position = data.payload
-          meta = data.meta
-          $('#graph').html($('#graph').html() + (@graph_template(x1: meta.previous_x, y1: meta.previous_y, x2: position.x, y2: position.y, player_id: position.player_id)))
+          @position = data.payload
+          @meta = data.meta
 
-          if meta.winner
+          row = @graph_template(x1: @meta.previous_x, y1: @meta.previous_y, x2: @position.x, y2: @position.y, player_id: @position.player_id)
+          $('#graph').html($('#graph').html() + row)
+
+          if @meta.winner
             @addWinner(@player_id)
 
+          @logEntry(@position, @meta)
+
   addWinner: (player_id) ->
-    $('#winners').html($('#winners').html() + @winner_template(player_id: @player_id))
+    $('#winners').html($('#winners').html() + @winner_template(player: @player))
+
+  logEntry: (position, meta) ->
+    row = @log_template(id: @position.id, name: @player.get('name'), previous_x: @meta.previous_x, previous_y: @meta.previous_y, current_x: @position.x, current_y: @position.y, direction: @position.face, winner: @meta.winner)
+
+    $('#logs').append(row)

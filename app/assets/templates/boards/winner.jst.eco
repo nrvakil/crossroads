@@ -1,1 +1,1 @@
-<li><%= @player_id %></li>
+<li><%= @player.get('name') %></li>
