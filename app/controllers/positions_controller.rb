@@ -36,7 +36,10 @@ class PositionsController < ApplicationController
     service_obj = PositionService.new(params)
     @position = service_obj.take_a_step
     render json: { payload: @position,
-                   meta: { id: @position.id, winner: service_obj.winner? } }
+                   meta: { id: @position.id,
+                           winner: service_obj.winner?,
+                           previous_x: service_obj.curr_pos[:x],
+                           previous_y: service_obj.curr_pos[:y] } }
   end
 
   private

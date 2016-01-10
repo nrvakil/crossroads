@@ -19,7 +19,8 @@ class GameService
   # @return [array] winners for the game
   def add_winner
     @game = Game.find(game_id)
-    game.winners += player_id
+    game.winners ||= []
+    game.winners << player_id
     game.save
     game.winners
   end

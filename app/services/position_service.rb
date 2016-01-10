@@ -36,9 +36,9 @@ class PositionService
     when 'E'
       @direction = { x: 1, y: 0 }
     when 'W'
-      @direction = { x: 0, y: -1 }
-    when 'S'
       @direction = { x: -1, y: 0 }
+    when 'S'
+      @direction = { x: 0, y: -1 }
     end
   end
 

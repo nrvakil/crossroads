@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :players, only: [:index]
 
   resources :positions, only: [:index, :create]
-  post '/positions/initiate' => 'positions#initiate'
+  post '/positions-initiate' => 'positions#initiate'
 end

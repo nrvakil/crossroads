@@ -9,5 +9,7 @@
         <button id="btn-roll" class="btn-danger btn-sm">ROLL</button>
       </div>
     </div>
+    <div id="graph" class="col-md-10">
+    </div>
   </div>
 </div>
