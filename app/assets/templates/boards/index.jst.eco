@@ -1,8 +1,18 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <center><h2>Board</h2></center>
+    </div>
+  </div>
+  <hr />
+
+  <div class="row">
     <div class="col-md-2">
       <div class="row">
-        <label>Players</label>
+        <center><label>Players</label></center>
+      </div>
+      <hr />
+      <div class="row">
         <ol>
           <% for player in @players.models: %>
             <li><%= player.get('name') %></li>
@@ -10,12 +20,16 @@
         </ol>
       </div>
       <hr />
+      <br>
 
       <div id='die-roller' class="row">
       </div>
+      <hr />
 
       <div class="row">
-        <button id="btn-roll" class="btn-danger btn-sm">ROLL</button>
+        <center>
+          <button id="btn-roll" class="btn-danger btn-lg">ROLL</button>
+        </center>
       </div>
     </div>
 
@@ -23,7 +37,31 @@
       <svg id="graph" width="900" height="500">
         <rect x="0" y="0" width="900" height="500"
         style="fill:blue;stroke:pink;stroke-width:5;fill-opacity:0.1;stroke-opacity:0.9" />
+        <line x1="445" y1="250" x2="455" y2="250" style="stroke:rgb(0,0,0);stroke-width:4" />
+        <line x1="450" y1="245" x2="450" y2="255" style="stroke:rgb(0,0,0);stroke-width:4" />
       </svg>
+    </div>
+  </div>
+  <hr />
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="row">
+        <center><label>Winners</label></center>
+      </div>
+      <hr />
+      <div class="row">
+        <ol id="winners"></ol>
+      </div>
+    </div>
+
+    <div class="col-md-10">
+      <div class="row">
+        <center><label>Logs</label></center>
+      </div>
+      <hr />
+      <div class="row">
+      </div>
     </div>
   </div>
 </div>

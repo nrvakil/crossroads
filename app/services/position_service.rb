@@ -68,7 +68,7 @@ class PositionService
   # @return [boolean] true if winner else false
   def winner?
     covered = Position.where(game_id: game_id, x: x, y: y)
-              .where.not(player_id: player_id).count > 0
+              .where.not(player_id: player_id).count > 1
 
     GameService.new(game_id: game_id, player_id: player_id).add_winner if covered
     covered

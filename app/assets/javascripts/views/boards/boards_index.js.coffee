@@ -3,6 +3,7 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
   template: JST['boards/index']
   roll_template: JST['boards/roll']
   graph_template: JST['boards/graph']
+  winner_template: JST['boards/winner']
 
   events:
     "click #btn-roll": "roll"
@@ -80,3 +81,9 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
           position = data.payload
           meta = data.meta
           $('#graph').html($('#graph').html() + (@graph_template(x1: meta.previous_x, y1: meta.previous_y, x2: position.x, y2: position.y, player_id: position.player_id)))
+
+          if meta.winner
+            @addWinner(@player_id)
+
+  addWinner: (player_id) ->
+    $('#winners').html($('#winners').html() + @winner_template(player_id: @player_id))

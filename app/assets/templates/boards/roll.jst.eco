@@ -1,20 +1,18 @@
 <div class="row">
   <div class="col-md-12">
-    <label class="to_center">Roll the dice</label>
+    <center><label>Turn:</label></center>
+    <center>
+      <span class="label label-success">
+        <%= @player.get('name') %>
+      </span>
+    </center>
+    <input id="player-turn" class="hidden" value="<%= @player.get('id') %>">
   </div>
 </div>
 <hr />
 
 <div class="row">
   <div class="col-md-12">
-    <h5 class="to_center"><%= @player.get('name') %></h5>
-    <input id="player-turn" class="hidden" value="<%= @player.get('id') %>">
+    <center><h1 class="to_center"><%= @face %></h1></center>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-md-12">
-    <h3 class="to_center"><%= @face %></h3>
-  </div>
-</div>
-<br>
