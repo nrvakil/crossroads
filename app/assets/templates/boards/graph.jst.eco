@@ -4,4 +4,4 @@
 
 <line id="y-<%= @player.get('id') %>" x1=<%= @x2 * 50 + 450 %> y1=<%= @y2 * 50 + 245 %> x2=<%= @x2 * 50 + 450 %> y2=<%= @y2 * 50 + 255 %> style="stroke:rgb(255,0,0);stroke-width:2" />
 
-<text id="name-<%= @player.get('id') %>" x=<%= @x2 * 50 + 450 %> y=<%= @y2 * 50 + 250 %> fill="blue"><%= @player.get('name').split(' ')[0] + ' ' + @player.get('name').split(' ')[1] %></text>
+<text id="name-<%= @player.get('id') %>" x=<%= @x2 * 50 + 450 %> y=<%= @y2 * 50 + 250 %> fill="blue"><%= @player.get('name').split(' ')[0] + ' ' + @player.get('name').split(' ')[1][0] %></text>

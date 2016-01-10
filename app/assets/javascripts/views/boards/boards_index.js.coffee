@@ -100,6 +100,10 @@ class Crossroads.Views.BoardsIndex extends Backbone.View
 
           @logEntry(@position, @meta)
 
+          if @meta.end_game
+            alert('Game over!')
+            Backbone.history.navigate('listing', true)
+
   addWinner: (player_id) ->
     $.board.game.set({'winners': _.flatten([$.board.game.get('winners'), [player_id]])})
 
